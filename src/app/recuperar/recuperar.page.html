@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <img src="./assets/img/duocuc.png" alt="Logo" class="header-logo">
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="image-container">
+    <img src="./assets/img/recuperar_contra2.png" alt="Login Image" class="responsive-image">
+  </div>
+
+  <div class="reset-password-container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Restablecer Contraseña</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Correo Electrónico</ion-label>
+          <ion-input type="email"></ion-input>
+        </ion-item>
+
+        <ion-button id="open-loading" expand="block">Enviar Enlace de Restablecimiento</ion-button>
+
+        <ion-text color="primary" class="volver-inicio">
+          <a [routerLink]="['/login']" class="volver-link">
+            Volver
+          </a>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
