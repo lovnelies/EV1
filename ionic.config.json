@@ -1,7 +1,0 @@
-{
-  "name": "TeLlevoApp1",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
