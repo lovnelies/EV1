@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <img src="./assets/img/duocuc.png" alt="Logo DUOC" class="header-logo">
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="image-container">
+    <img src="./assets/img/photo_inicio.png" alt="Imagen Inicio" class="responsive-image">
+  </div>
+
+<ion-content class="ion-padding" color="dark">
+  <div class="form-slide">
+     <ion-card-title>Regístrate</ion-card-title>
+
+    <ion-item color="white" lines="none">
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-input color="danger"placeholder="Ingresa tu nombre" [(ngModel)]="nombre" (ionInput)="Validar()"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="nombreError">{{ nombreError }}</ion-text>
+
+    <ion-item color="white" lines="none">
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-input placeholder="Ingresa tu apellido" [(ngModel)]="apellido" (ionInput)="Validar()"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="apellidoError">{{ apellidoError }}</ion-text>
+
+    <ion-item color="white" lines="none">
+      <ion-icon name="mail" slot="start"></ion-icon>
+      <ion-input placeholder="Ingresa tu correo electrónico" [(ngModel)]="email" (ionInput)="Validar()" type="email"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="emailError">{{ emailError }}</ion-text>
+
+    <ion-item color="white"lines="none">
+      <ion-icon name="lock-closed" slot="start"></ion-icon>
+      <ion-input placeholder="Ingresa tu contraseña" [(ngModel)]="password" (ionInput)="Validar()" type="password"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="passwordError">{{ passwordError }}</ion-text>
+
+    <ion-button expand="block" fill="clear" (click)="registrarUsuario()" [disabled]="!canProceed">
+      Registrar
+    </ion-button>
+
+    <ion-text lines="none">
+      <p>¿Ya tienes una cuenta? <a href="/home">Iniciar Sesión</a></p>
+    </ion-text>
+  </div>
+</ion-content>
