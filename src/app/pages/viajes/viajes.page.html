@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Viajes Disponibles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" *ngFor="let viaje of viajes">
+        <ion-card (click)="seleccionarViaje(viaje)">
+          <ion-card-header>
+            <ion-card-title>{{ viaje.lugarPartida }} → {{ viaje.destino }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p><strong>Precio:</strong> ${{ viaje.precio }}</p>
+            <p><strong>Patente:</strong> {{ viaje.patente }}</p>
+            <p>Fecha y Hora: {{ viaje.horaPartida | date: 'fullDate' }} {{ viaje.horaPartida | date: 'shortTime' }}</p>
+            <p><strong>Conductor:</strong> {{ viaje.conductorNombre }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

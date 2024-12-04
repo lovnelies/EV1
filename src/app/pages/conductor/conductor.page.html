@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Viaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Botón para abrir el calendario -->
+  <ion-item>
+    <ion-label>Fecha y Hora</ion-label>
+    <ion-button expand="block" (click)="abrirCalendario()">Seleccionar Fecha y Hora</ion-button>
+  </ion-item>
+
+  <!-- Mostrar la fecha seleccionada -->
+  <ion-item *ngIf="viaje.horaPartida">
+    <ion-label>Seleccionado:</ion-label>
+    <ion-text>{{ viaje.horaPartida | date: 'short' }}</ion-text>
+  </ion-item>
+
+  <!-- Resto del formulario -->
+  <ion-item>
+    <ion-label position="stacked">Lugar de Partida</ion-label>
+    <ion-input
+      [(ngModel)]="viaje.lugarPartida"
+      name="lugarPartida"
+      required
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Destino</ion-label>
+    <ion-input
+      [(ngModel)]="viaje.destino"
+      name="destino"
+      required
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Precio</ion-label>
+    <ion-input
+      type="number"
+      [(ngModel)]="viaje.precio"
+      name="precio"
+      required
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Patente</ion-label>
+    <ion-input
+      [(ngModel)]="viaje.patente"
+      name="patente"
+      required
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Número de Asientos Disponibles</ion-label>
+    <ion-input
+      type="number"
+      [(ngModel)]="viaje.asientosDisponibles"
+      name="asientosDisponibles"
+      required
+    ></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="crearViaje()">Crear Viaje</ion-button>
+
+  <!-- Modal para el calendario -->
+  <ion-modal [isOpen]="mostrarCalendario" (didDismiss)="cerrarCalendario()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Seleccionar Fecha y Hora</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="cerrarCalendario()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <ion-datetime
+          display-format="DD/MM/YYYY HH:mm"
+          picker-format="DD/MM/YYYY HH:mm"
+          [(ngModel)]="viaje.horaPartida"
+        ></ion-datetime>
+        <ion-button expand="block" (click)="cerrarCalendario()">Aceptar</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

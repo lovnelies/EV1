@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import * as mapboxgl from 'mapbox-gl';
-import { environment } from '../../../environments/environment';
 import { NotificacionesService } from '../../services/notificaciones.service';
 import { Storage } from '@ionic/storage-angular';
 import { Subscription } from 'rxjs';
@@ -45,8 +44,6 @@ export class RoleSelectionPage implements OnInit, OnDestroy {
     });
   }
 
-  
-
   ngOnDestroy() {
     if (this.viajeActivoSubscription) {
       this.viajeActivoSubscription.unsubscribe();
@@ -75,7 +72,6 @@ export class RoleSelectionPage implements OnInit, OnDestroy {
     const viajeGuardado = await this.storage.get('viaje_activo');
     if (viajeGuardado) {
       this.viajeActivo = viajeGuardado;
-      
     }
   }
 
@@ -92,8 +88,6 @@ export class RoleSelectionPage implements OnInit, OnDestroy {
         });
     }
   }
-
- 
 
   async cancelarViaje() {
     if (this.viajeActivo) {
@@ -142,7 +136,8 @@ export class RoleSelectionPage implements OnInit, OnDestroy {
     if (this.viajeActivo) {
       alert('Ya tienes un viaje activo. Cancélalo para poder seleccionar otro.');
     } else {
-      this.router.navigate(['/pasajero']);
+      // Redirigir primero al módulo de viajes
+      this.router.navigate(['/viajes']);
     }
   }
 
@@ -154,6 +149,4 @@ export class RoleSelectionPage implements OnInit, OnDestroy {
     this.router.navigate(['/notificaciones']);
     this.nuevasNotificaciones = false;
   }
-
-  
 }
